@@ -40,7 +40,8 @@ src/main/java/com/douglas/auth_api/
 │   ├── JwtAuthFilter.java          # Filtro JWT — intercepta todas as requisições
 │   └── SecurityConfig.java         # Configuração de segurança e rotas
 ├── controller/
-│   └── AuthController.java         # Endpoints de autenticação
+│   ├── AuthController.java         # Endpoints de autenticação
+│   └── UserController.java         # Endpoints de usuário autenticado
 ├── dto/
 │   ├── LoginRequest.java           # Dados de entrada do login
 │   ├── RegisterRequest.java        # Dados de entrada do registro
@@ -80,7 +81,7 @@ src/main/java/com/douglas/auth_api/
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/SEU_USUARIO/auth-api.git
+git clone https://github.com/SantoBug/auth-api.git
 cd auth-api
 
 # 2. Suba o banco de dados
@@ -128,12 +129,22 @@ Content-Type: application/json
 }
 ```
 
+---
+
 ### Rotas protegidas — requer token
 
+**Buscar usuário autenticado**
 ```http
 GET /api/users/me
 Authorization: Bearer {accessToken}
 ```
+
+**Resposta:**
+```
+Usuário autenticado: douglas@email.com
+```
+
+> Sem o token retorna **403 Forbidden**. Com token válido retorna **200 OK**.
 
 ---
 
@@ -147,6 +158,9 @@ Cliente ◄─── { accessToken }  ───── API
 ROTA PROTEGIDA
 Cliente ──── Bearer token ────► Filtro JWT valida ────► Controller responde
 Cliente ◄─── { dados }       ────────────────────────────────────────────────
+
+SEM TOKEN
+Cliente ──── sem token ────► Filtro JWT bloqueia ────► 403 Forbidden
 ```
 
 ---
@@ -164,5 +178,5 @@ Cliente ◄─── { dados }       ──────────────�
 ## 👨‍💻 Autor
 
 **Douglas**
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/SEU_PERFIL)
-[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/SEU_USUARIO)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/douglassant)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/SantoBug)
