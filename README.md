@@ -239,5 +239,5 @@ Cliente ──── sem token ────► Filtro JWT bloqueia ────�
 ## 👨‍💻 Autor
 
 **Douglas**
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/SEU_PERFIL)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/douglassant)
 [![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/SantoBug)
