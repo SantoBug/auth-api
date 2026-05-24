@@ -76,6 +76,7 @@ src/main/java/com/douglas/auth_api/
 
 - [Java 21+](https://adoptium.net)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [Postman](https://www.postman.com/downloads) — para testar os endpoints
 
 ### Passo a passo
 
@@ -92,6 +93,66 @@ docker compose up -d
 ```
 
 A API estará disponível em `http://localhost:8080`
+
+---
+
+## 🧪 Como testar com Postman
+
+### 1. Registrar um usuário
+
+- Método: `POST`
+- URL: `http://localhost:8080/api/auth/register`
+- Body → raw → JSON:
+
+```json
+{
+  "name": "Douglas",
+  "email": "douglas@email.com",
+  "password": "123456"
+}
+```
+
+Resposta esperada: `201 Created` com o `accessToken`
+
+---
+
+### 2. Fazer login
+
+- Método: `POST`
+- URL: `http://localhost:8080/api/auth/login`
+- Body → raw → JSON:
+
+```json
+{
+  "email": "douglas@email.com",
+  "password": "123456"
+}
+```
+
+Resposta esperada: `200 OK` com o `accessToken`
+
+---
+
+### 3. Acessar rota protegida
+
+- Método: `GET`
+- URL: `http://localhost:8080/api/users/me`
+- Authorization → Bearer Token → cola o token recebido no login
+
+Resposta esperada: `200 OK`
+```
+Usuário autenticado: douglas@email.com
+```
+
+---
+
+### 4. Testar sem token
+
+- Método: `GET`
+- URL: `http://localhost:8080/api/users/me`
+- Sem token no header
+
+Resposta esperada: `403 Forbidden` — acesso negado
 
 ---
 
@@ -178,5 +239,5 @@ Cliente ──── sem token ────► Filtro JWT bloqueia ────�
 ## 👨‍💻 Autor
 
 **Douglas**
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/douglassant)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://linkedin.com/in/SEU_PERFIL)
 [![GitHub](https://img.shields.io/badge/GitHub-black?style=flat&logo=github)](https://github.com/SantoBug)
