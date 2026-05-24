@@ -58,7 +58,7 @@ public class JwtService {
         return resolver.apply(claims);
     }
 
-    //CONVERTE A CHAVE PARA O FORMATO QUE O JJWT ENTENDE
+    //CONVERTE A CHAVE PARA O FORMATO QUE O JWT ENTENDE
     private SecretKey getSigninKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
